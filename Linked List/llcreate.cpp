@@ -3,6 +3,55 @@
 #include<vector>
 using namespace std;
 
+
+class node{
+    public:
+        int data;
+        node *next;
+};
+
+class LinkedList{
+    private:
+        node *head;
+    public:
+        LinkedList(vector<int> &v);
+        node *search();
+        void display();
+};
+
+LinkedList::LinkedList(vector<int> &v){
+    vector<int>::iterator itr=v.begin()+1;
+    head=new node();
+    head->data=v.at(0);
+    head->next=NULL;
+    node *p=head;
+    for(itr;itr!=v.end();itr++){
+        p->next=new node();
+        p=p->next;
+        p->data=*itr;
+    }
+}
+
+node *LinkedList::search(){
+
+}
+
+void LinkedList::display(){
+    node *p=head;
+    while(p){
+        cout<<p->data<<" ";
+        p=p->next;
+    }
+}
+
+int main(){
+    vector<int> v{10,9,8,7,6,5,4,3,2,1};
+    LinkedList *ll=new LinkedList(v);
+    ll->display();
+    return 0;
+
+}
+
 // struct node{
 //     int data;
 //     struct node *next;
@@ -58,53 +107,3 @@ using namespace std;
 
 
  /////* using STL */////
-
-
-
-class node{
-    public:
-        int data;
-        node *next;
-};
-
-class LinkedList{
-    private:
-        node *head;
-    public:
-        LinkedList(vector<int> &v);
-        node *search();
-        void display();
-};
-
-LinkedList::LinkedList(vector<int> &v){
-    vector<int>::iterator itr=v.begin()+1;
-    head=new node();
-    head->data=v.at(0);
-    head->next=NULL;
-    node *p=head;
-    for(itr;itr!=v.end();itr++){
-        p->next=new node();
-        p=p->next;
-        p->data=*itr;
-    }
-}
-
-node *LinkedList::search(){
-
-}
-
-void LinkedList::display(){
-    node *p=head;
-    while(p){
-        cout<<p->data<<" ";
-        p=p->next;
-    }
-}
-
-int main(){
-    vector<int> v{10,9,8,7,6,5,4,3,2,1};
-    LinkedList *ll=new LinkedList(v);
-    ll->display();
-    return 0;
-
-}
